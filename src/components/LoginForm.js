@@ -6,17 +6,17 @@ const style = {
     justifyContent: "space-evenly",
     background: "grey",
     alignItems: "center",
-    width: "90%",
+    width: "70%",
     padding: 20
 };
 
-function LoginForm ({ Login, error }) {
+function LoginForm ({ Login1, error }) {
     const [details, setDetails] = useState({username: "", password: ""});
 
     const submitHandler = event => {
         event.preventDefault();
 
-        Login(details);
+        Login1(details);
     }
 
     return (
@@ -27,7 +27,7 @@ function LoginForm ({ Login, error }) {
                     {error? <p>{error}</p>:null}
                     <div className="form-group">
                         <label htmlFor="name">Name:</label>
-                        <input type="text" name="username" id="name" onChange={(event)=>{setDetails({...details, username: event.target.value})}} value={details.name} />
+                        <input type="text" name="username" id="username" onChange={(event)=>{setDetails({...details, username: event.target.value})}} value={details.name} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password:</label>
