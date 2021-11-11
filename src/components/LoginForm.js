@@ -26,7 +26,7 @@ function LoginForm ({ Login1, error }) {
                     <h2>Login</h2>
                     {error? <p>{error}</p>:null}
                     <div className="form-group">
-                        <label htmlFor="name">Name:</label>
+                        <label htmlFor="username">Username:</label>
                         <input type="text" name="username" id="username" onChange={(event)=>{setDetails({...details, username: event.target.value})}} value={details.name} />
                     </div>
                     <div className="form-group">
