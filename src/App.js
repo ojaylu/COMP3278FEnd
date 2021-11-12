@@ -30,18 +30,21 @@ function App() {
               Legitimate Bank
             </Navbar.Brand>
 
-            <Navbar.Toggle />
-            <Navbar.Collapse id="basic-navbar-nav">
-            {loggedIn? 
+            {loggedIn? <Navbar.Toggle />: null}
+
+            {loggedIn?
+              <Navbar.Collapse id="basic-navbar-nav">
+            
               <Nav className="me-auto">
                 <Link to="/" className="nav-link">Home</Link>
                 <Link to="/transfer" className="nav-link">Transfer</Link>
                 <Link to="/details" className="nav-link">Details</Link>
               </Nav>
+              </Navbar.Collapse>
               :
               null
             }
-            </Navbar.Collapse>
+            
           </Container>
         </Navbar>
           {loggedIn? <Main /> : <Login setLoggedIn={setLoggedIn} setUser={setUser} />}
