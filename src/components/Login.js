@@ -42,6 +42,8 @@ function Login ({ setLoggedIn, setUser }) {
         console.log("Logout");
     }
 
+    
+
     return (
         <div className="App" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
             <LoginForm Login1={Login1} error={error} />

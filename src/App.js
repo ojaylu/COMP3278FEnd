@@ -37,7 +37,8 @@ function App() {
             
               <Nav className="me-auto">
                 <Link to="/" className="nav-link">Home</Link>
-                <Link to="/transfer" className="nav-link">Transfer</Link>
+                <Link to="/transaction" className="nav-link">Make Transaction</Link>
+                <Link to="/transhist" className="nav-link">Transaction History</Link>
                 <Link to="/details" className="nav-link">Details</Link>
               </Nav>
               </Navbar.Collapse>
