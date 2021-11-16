@@ -5,7 +5,7 @@ function Details () {
     const user = useContext(UserContext);
 
     return (
-        <div class="card">
+        <div class="card" style={{maxWidth: "500px", margin: "auto"}}>
             <div class="card-header" style={{background: "black", color:"white"}}>
                 User Details
             </div>

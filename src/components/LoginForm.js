@@ -52,8 +52,8 @@ function LoginForm ({ Login1, error }) {
                         {/*<label htmlFor="password"></label>*/}
                         <input type="password" name="password" id="password" placeholder = "Password"onChange={(event)=>{setDetails({...details, password: event.target.value})}} value={details.password} />
                     </div>
-                    <br></br><input type="submit" value="Next" style={{borderRadius: "20%"}}/>
-                    <input type="reset" style={{borderRadius: "20%"}}></input>
+                    <br></br><input type="submit" value="Next" class="btn btn-primary" style={{marginRight: "5px"}}/>
+                    <input type="reset" class="btn btn-primary"></input>
                 </div>
                 
             </form>
