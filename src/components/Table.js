@@ -74,8 +74,8 @@ export default function CollapsibleTable({ accounts }) {
             </TableRow>
             </TableHead>
             <TableBody>
-            {accounts.map((account) => (
-                <Row key={account.accountID.name} account={account} />
+            {accounts.map((account, index) => (
+                <Row key={account.accountID.name} account={account} key={index} />
             ))}
             </TableBody>
         </Table>

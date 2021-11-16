@@ -1,75 +1,64 @@
 import { useEffect, useState } from 'react';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from "@mui/material/InputLabel";
+import NativeSelect from "@mui/material/NativeSelect";
 
 const API = "https://v6.exchangerate-api.com/v6/36f3502ea29f9542981e5263/latest/USD";
 
 function Exchange () {
-  const currencyOptions = [];
-  
-  const [fromCurrency, setFromCurrency] = useState()
-  const [toCurrency, setToCurrency] = useState()
-  const [exchangeRate, setExchangeRate] = useState()
-  const [amount, setAmount] = useState(1)
-  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
 
-  let toAmount, fromAmount
-  if (amountInFromCurrency) {
-    fromAmount = amount
-    toAmount = amount * exchangeRate
-  } else {
-    toAmount = amount
-    fromAmount = amount / exchangeRate
-  }
+    const [ currencies, setCurrencies ] = useState({});
+    const [ fromCurrency, setFromCurrency ] = useState("");
+    const [ toCurrency, setToCurrency ] = useState("");
+    const [ exchangeRate, setExchangeRate ] = useState(1);
+    const [ fromAmount, setFromAmount ] = useState(0);
+    const [ toAmount, setToAmount ] = useState(0);
 
-  useEffect(() => {
-    fetch(API)
-      .then(res => res.json())
-      .then(data => {
-        const firstCurrency = Object.keys(data.rates)[0]
-        setCurrencyOptions([data.base, ...Object.keys(data.rates)])
-        setFromCurrency(data.base)
-        setToCurrency(firstCurrency)
-        setExchangeRate(data.rates[firstCurrency])
-      })
-  }, [])
+    useEffect(() => {
+        fetch(API)
+            .then(res => res.json())
+            .then(data => {
+                const firstCurrency = Object.keys(data.conversion_rates)[0];
+                setCurrencies(data.conversion_rates);
+                setFromCurrency(data.base_code);
+                setToCurrency(firstCurrency);
+                setExchangeRate(data.conversion_rates[firstCurrency]);
+            })
+    }, []);
 
-  useEffect(() => {
-    if (fromCurrency != null && toCurrency != null) {
-      fetch(`${BASE_URL}?base=${fromCurrency}&symbols=${toCurrency}`)
-        .then(res => res.json())
-        .then(data => setExchangeRate(data.rates[toCurrency]))
-    }
-  }, [fromCurrency, toCurrency])
+    useEffect(() => {
+        console.log("from currency: ", fromCurrency);
 
-  function handleFromAmountChange(e) {
-    setAmount(e.target.value)
-    setAmountInFromCurrency(true)
-  }
+    }, [fromCurrency]);
 
-  function handleToAmountChange(e) {
-    setAmount(e.target.value)
-    setAmountInFromCurrency(false)
-  }
-
-  return (
-    <>
-      <h1>Convert</h1>
-      <CurrencyRow
-        currencyOptions={currencyOptions}
-        selectedCurrency={fromCurrency}
-        onChangeCurrency={e => setFromCurrency(e.target.value)}
-        onChangeAmount={handleFromAmountChange}
-        amount={fromAmount}
-      />
-      <div className="equals">=</div>
-      <CurrencyRow
-        currencyOptions={currencyOptions}
-        selectedCurrency={toCurrency}
-        onChangeCurrency={e => setToCurrency(e.target.value)}
-        onChangeAmount={handleToAmountChange}
-        amount={toAmount}
-      />
-    </>
-  );
+    return (
+        <>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <NativeSelect
+                    onChange={(e) => {setFromCurrency(e.target.value)}}
+                    value={fromCurrency}
+                >
+                    {Object.keys(currencies).map((currency, index) => {
+                        return (
+                            <option value={currency} key={index}>{currency}</option>
+                        )
+                    })}
+                </NativeSelect>
+            </FormControl>
+            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                <NativeSelect
+                    onChange={(e) => {setToCurrency(e.target.value)}}
+                    value={toCurrency}
+                >
+                    {Object.keys(currencies).map((currency, index) => {
+                        return (
+                            <option value={currency} key={index}>{currency}</option>
+                        )
+                    })}
+                </NativeSelect>
+            </FormControl>
+        </>
+    );
 }
 
 export default Exchange;

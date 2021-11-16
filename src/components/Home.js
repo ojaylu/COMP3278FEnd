@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Table from "./Table";
 import Container from "react-bootstrap/Container";
+import Exchange from "./Exchange";
 
 function Home () {
     const user = useContext(UserContext);
@@ -34,6 +35,7 @@ function Home () {
                 <h3 style={{paddingBottom: "50px"}}>Welcome, {user.firstname}</h3>
                 
                 <Table accounts={accounts}/>
+                <Exchange />
             </div>
         </div>
     )
