@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Table from "./Table";
+import Container from "react-bootstrap/Container";
 
 function Home () {
     const user = useContext(UserContext);
@@ -28,16 +30,10 @@ function Home () {
 
     return (
         <div>
-            <h3 style={{paddingBottom: "50px"}}>Welcome, {user.firstname}</h3>
-            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-evenly"}}>
-            {accounts.map((account, index) => (
-                <Card style={{ width: '15rem', margin: "10px"}} key={index}>
-                    <Card.Body style={{background: "LightGray"}}>
-                        <Card.Title>{account.accountName}</Card.Title>
-                        <Button variant="primary">Details</Button>
-                    </Card.Body>
-                </Card>
-            ))}
+            <div style={{maxWidth:"800px", margin:"auto"}}>
+                <h3 style={{paddingBottom: "50px"}}>Welcome, {user.firstname}</h3>
+                
+                <Table accounts={accounts}/>
             </div>
         </div>
     )
