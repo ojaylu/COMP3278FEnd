@@ -18,11 +18,11 @@ function SecurityQ ({setLoggedIn, setStep1}) {
     }
 
     return (
-        <div class="card" style={{marginTop: "50px"}}>
-            <div class="card-header">
+        <div>
+            <div  style={{marginTop: "50px", marginBottom: "30px"}}>
                 <h1>Security Question</ h1>
             </div>
-            <div class="card-body">
+            <div class="container shadow" style={{padding: "30px"}}>
                 <form onSubmit={submitHandler}>
                     <div className="form-inner">
                         {error? <p>{error}</p>:null}
