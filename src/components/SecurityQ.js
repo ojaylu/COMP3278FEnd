@@ -1,14 +1,15 @@
 import {useState} from "react";
+import Input from "@mui/material/Input";
+import Button from "@mui/material/Button";
 
 function SecurityQ ({setLoggedIn, setStep1}) {
-    const securityQ = "what is your name";
+    const securityQ = "What is your name?";
     const securityA = "bob";
 
     const [ans, setAns] = useState("");
     const [error, setError] = useState();
 
-    const submitHandler = (event) => {
-        event.preventDefault();
+    const submitHandler = () => {
         if (ans == securityA) {
             setLoggedIn(true);
             setStep1(true);
@@ -18,23 +19,17 @@ function SecurityQ ({setLoggedIn, setStep1}) {
     }
 
     return (
-        <div>
+        <div style={{width: "50%"}}>
             <div  style={{marginTop: "50px", marginBottom: "30px"}}>
-                <h1>Security Question</ h1>
+                <h3>Security Question</ h3>
             </div>
-            <div class="container shadow" style={{padding: "30px"}}>
-                <form onSubmit={submitHandler}>
-                    <div className="form-inner">
-                        {error? <p>{error}</p>:null}
-                        <div className="form-group">
-                            <label htmlFor="name">{securityQ}</label>
-                            <br/>
-                            <input type="text" onChange={(event)=>{setAns(event.target.value)}} value={ans} />
-                        </div>
-                    </div>
+            <div class="container shadow" style={{padding: "30px", display: "flex", flexDirection: "column", alignItems: "center", minWidth: "300px"}}>
+                {error? <p>{error}</p>:null}
+                    <h4>{securityQ}</h4>
                     <br/>
-                    <input class="btn btn-primary" type="submit" value="Next" />
-                </form>
+                    <Input color="primary" onChange={(event)=>{setAns(event.target.value)}} value={ans} sx={{margin: "10px"}} />
+                    <br/>
+                    <Button variant="contained" onClick={submitHandler} sx={{marginTop: "10px"}}>Next</Button>
             </div>
         </div>
     )

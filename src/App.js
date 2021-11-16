@@ -34,15 +34,15 @@ function App() {
             {loggedIn? <Navbar.Toggle />: null}
 
             {loggedIn?
-              <Navbar.Collapse id="basic-navbar-nav">
+              <Navbar.Collapse>
             
-              <Nav className="me-auto">
-                <Link to="/" className="nav-link">Home</Link>
-                <Link to="/transaction" className="nav-link">Make Transaction</Link>
-                <Link to="/transhist" className="nav-link">Transaction History</Link>
-                <Link to="/details" className="nav-link">Details</Link>
-                <Button variant="contained" onClick={() => {setLoggedIn(false)}}>Logout</Button>
-              </Nav>
+                <Nav className="me-auto">
+                  <Link to="/" className="nav-link">Home</Link>
+                  <Link to="/transaction" className="nav-link">Make Transaction</Link>
+                  <Link to="/transhist" className="nav-link">Transaction History</Link>
+                  <Link to="/details" className="nav-link">Details</Link>
+                  <Button variant="contained" onClick={() => {setLoggedIn(false)}} anchor="right">Logout</Button>
+                </Nav>
               </Navbar.Collapse>
               :
               null
