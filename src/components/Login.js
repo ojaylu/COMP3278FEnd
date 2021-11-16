@@ -17,9 +17,8 @@ function Login ({ setLoggedIn, setUser }) {
     const Login1 = details => {
         if (details.username == adminUser.username && details.password == adminUser.password) {
             console.log("Logged In");
-            setUser({...details, firstname: "bob"});
+            setUser({...details, firstname: "bob", lastname: "hi"});
             setStep1(false);
-            setLoggedIn(true);
         } else {
             console.log("Details do not match");
             if (details.username != adminUser.username) {
@@ -30,23 +29,9 @@ function Login ({ setLoggedIn, setUser }) {
         }
     }
 
-    const Login2 = ans => {
-        if (ans != securityAns) {
-            setError("Wrong answer");
-        } else {
-            setLoggedIn(true);
-        }
-    }
-
-    const Logout = () => {
-        console.log("Logout");
-    }
-
-    
-
     return (
         <div className="App" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-            <LoginForm Login1={Login1} error={error} />
+            {step1? <LoginForm Login1={Login1} error={error} /> : <SecurityQ setLoggedIn={setLoggedIn} setStep1={setStep1} />}
         </div>
     )
 }

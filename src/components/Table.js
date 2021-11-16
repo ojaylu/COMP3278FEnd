@@ -8,7 +8,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -64,7 +63,7 @@ export default function CollapsibleTable({ accounts }) {
     const headerBackground = "black";
 
     return (
-        <TableContainer component={Paper}>
+      <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
             <TableHead sx={{background: headerBackground}}>
             <TableRow>
@@ -79,6 +78,6 @@ export default function CollapsibleTable({ accounts }) {
             ))}
             </TableBody>
         </Table>
-        </TableContainer>
+      </TableContainer>
     );
 }
