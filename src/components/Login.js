@@ -17,7 +17,7 @@ function Login ({ setLoggedIn, setUser }) {
     const Login1 = details => {
         if (details.username == adminUser.username && details.password == adminUser.password) {
             console.log("Logged In");
-            setUser({...details, firstname: "bob"});
+            setUser({...details, firstname: "bob", lastname: "hi"});
             setStep1(false);
             setLoggedIn(true);
         } else {

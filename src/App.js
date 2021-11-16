@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Main from "./components/Main";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./logo.png";
 
@@ -12,7 +13,7 @@ const UserContext = createContext({});
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState({name: "", email: "", password: ""});
+  const [user, setUser] = useState({name: "", email: "", password: "", lastname: ""});
 
   return (
     <UserContext.Provider value={user}>
@@ -40,6 +41,7 @@ function App() {
                 <Link to="/transaction" className="nav-link">Make Transaction</Link>
                 <Link to="/transhist" className="nav-link">Transaction History</Link>
                 <Link to="/details" className="nav-link">Details</Link>
+                <Button variant="contained" onClick={() => {setLoggedIn(false)}}>Logout</Button>
               </Nav>
               </Navbar.Collapse>
               :
