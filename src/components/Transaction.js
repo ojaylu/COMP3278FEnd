@@ -4,16 +4,10 @@ import { UserContext } from "../App";
 import { render } from 'react-dom';
 import Modal from "react-bootstrap/ModalHeader";
 import SubmitTrans from "./Modal";
- 
-
-
 import Button from "react-bootstrap/Button";
 
 import { waitForDomChange } from "@testing-library/react";
 
-
-
-  
 
 function Transaction () {
     const user = useContext(UserContext);
