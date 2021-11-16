@@ -3,7 +3,6 @@ import { UserContext } from "../App";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Table from "./Table";
-import Container from "react-bootstrap/Container";
 import Exchange from "./Exchange";
 
 function Home () {
@@ -33,10 +32,20 @@ function Home () {
         <div>
             <div style={{maxWidth:"800px", margin:"auto"}}>
                 <h3 style={{paddingBottom: "50px"}}>Welcome, {user.firstname}</h3>
-                
-                <Table accounts={accounts}/>
-                <Exchange />
             </div>
+
+            <hr />
+
+            <div style={{display:"flex", justifyContent:"center"}}> 
+                <div style={{maxWidth:"500px", width: "50%", marginRight: "10px"}}>
+                    <p>Account Details</p>
+                    <Table accounts={accounts} />
+                </div>
+                <div style={{marginLeft: "10px"}}>
+                    <p>Currency Exchange Calcualtor</p>
+                    <Exchange />
+                </div>
+            </div>  
         </div>
     )
 }
